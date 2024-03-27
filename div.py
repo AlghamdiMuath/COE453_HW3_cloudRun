@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/add', methods=['GET'])
+@app.route('/div', methods=['GET'])
 def div():
     x = request.args.get('x', default=0, type=float)
     y = request.args.get('y', default=0, type=float)

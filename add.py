@@ -1,20 +1,13 @@
-import functions_framework
-from flask import jsonify
+from flask import Flask, request, jsonify
 
-@functions_framework.http
-def add(request):
-    # Extracting values from query parameters instead of JSON body
-    x = request.args.get('X')
-    y = request.args.get('Y')
+app = Flask(__name__)
 
-    if x is not None and y is not None:
-        try:
-            x = float(x)
-            y = float(y)
-        except ValueError:
-            return jsonify({'error': 'Invalid input. Ensure X and Y are numbers.'}), 400
+@app.route('/add', methods=['GET'])
+def add():
+    x = request.args.get('x', default=0, type=float)
+    y = request.args.get('y', default=0, type=float)
+    result = x + y
+    return jsonify({'result': result})
 
-        result = x + y
-        return jsonify({'X': x, 'Y': y, 'Result': result})
-    else:
-        return jsonify({'error': 'Invalid input. X and Y must be provided as query parameters.'}), 400
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

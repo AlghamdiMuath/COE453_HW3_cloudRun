@@ -1,0 +1,57 @@
+swagger: "2.0"
+info:
+  title: ArithmeticOperationsAPI
+  description: API for performing basic arithmetic operations.
+  version: 1.0.0
+
+# Replace apache-vm-415704 with your actual Google Cloud project ID if necessary.
+host: api-1.apigateway.apache-vm-415704.cloud.goog
+basePath: /
+schemes:
+  - https
+
+paths:
+  /add:
+    get:
+      operationId: addNumbers
+      summary: Adds two numbers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://add-1-z4az5dd7xa-uc.a.run.app
+  /sub:
+    get:
+      operationId: subtractNumbers
+      summary: Subtracts two numbers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://sub-1-z4az5dd7xa-uc.a.run.app
+  /div:
+    get:
+      operationId: divideNumbers
+      summary: Divides two numbers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://div-1-z4az5dd7xa-uc.a.run.app
+  /mul:
+    get:
+      operationId: multiplyNumbers
+      summary: Multiplies two numbers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+      x-google-backend:
+        address: https://mul-1-z4az5dd7xa-uc.a.run.app
